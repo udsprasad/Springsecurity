@@ -46,7 +46,9 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2/**","/user")
                 .permitAll().
                 antMatchers("/authenticate").permitAll().
-                anyRequest().authenticated()
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/v3/api-docs/**").permitAll()
+                .anyRequest().authenticated()
                 .and().headers().frameOptions().disable().and().logout().permitAll()
                 .and()
                 // make sure we use stateless session; session won't be used to
